@@ -1,11 +1,7 @@
-FROM python:2.7.14
+RUN mkdir /code
+WORKDIR /code
+ADD . /code/
+RUN pip install -r requirements.txt
 
-RUN mkdir /opt/hello_word/
-WORKDIR /opt/hello_word/
-
-COPY requirements.txt .
-COPY . . 
-
-EXPOSE 80
-
-CMD [ "./hello_world" ]
+EXPOSE 9090
+CMD ["python", "/code/helloWorld.py"]
